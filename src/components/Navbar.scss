@@ -1,0 +1,66 @@
+$icon: #1abb9c;
+$main: #7F61FF;
+
+
+.body {
+    height: 100vh;
+    width: 100px;
+    background-color: white;
+    border-right: 1px solid $main;
+    font-family: 'Kumbh Sans', sans-serif;
+
+    .icon-holder {
+        width: auto;
+        align-items: center;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        cursor: pointer;
+        transition: .2s ease-out;
+
+        .nav-icon {
+            object-fit: contain;
+            width: 30px;
+            height: 30px;
+        }
+
+        .icon-title {
+            font-size: 1em;
+            font-weight: 300;
+            margin-top: 1rem;
+        }
+
+        &:hover {
+            background-color: $main;
+
+            .icon-title {
+                color: white;
+            }
+
+            .nav-icon {
+                filter: brightness(100);
+            }
+        }
+    }
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.active {
+    background-color: $main;
+
+    .icon-title {
+        color: white;
+    }
+
+    .nav-icon {
+        filter: brightness(100);
+    }
+}
