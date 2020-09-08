@@ -23,6 +23,16 @@ export default class Home extends Component {
         client.getAll().then((result) => {
             this.handleMyBooks(result)
         })
+
+        // using local storage because the menu items on the left where not colored on reload
+        const lastPage = localStorage.getItem("lastPage")
+        if (lastPage === "bookshelf") {
+            this.navBookshelf()
+        }
+
+        if (lastPage === "bookstore") {
+            this.navBookstore()
+        }
     }
 
     handleQueryChange = (query) => {
@@ -277,11 +287,29 @@ export default class Home extends Component {
     navBookstore() {
         // $("#bookstore").click()
         $("#bookstoreLink")[0].click()
+        localStorage.setItem("lastPage", "bookstore")
+        this.changeStyle(1)
     }
 
     navBookshelf() {
         // $("#bookshelf").click()
+        localStorage.setItem("lastPage", "bookshelf")
         $("#bookshelfLink")[0].click()
+        this.changeStyle(0)
+    }
+
+    // target = 0 -> bookshelf
+    // changes the style of the navbar items
+    changeStyle(target) {
+        const bookShelf = $("#bookshelf")
+        const store = $("#bookstore")
+        if (target === 0) {
+            bookShelf.addClass('active')
+            store.removeClass('active')
+        } else {
+            bookShelf.removeClass('active')
+            store.addClass('active')
+        }
     }
 }
 

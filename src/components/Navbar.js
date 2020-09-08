@@ -8,26 +8,13 @@ import * as $ from 'jquery'
 export default class Navbar extends Component {
 
     onBookshelf() {
-        this.changeStyle(0)
+        // this.changeStyle(0)
         this.props.onBookshelf()
     }
 
     onStore() {
-        this.changeStyle(1)
+        // this.changeStyle(1)
         this.props.onStore()
-    }
-
-    // target = 0 -> bookshelf
-    changeStyle(target) {
-        const bookShelf = $("#bookshelf")
-        const store = $("#bookstore")
-        if (target === 0) {
-            bookShelf.addClass('active')
-            store.removeClass('active')
-        } else {
-            bookShelf.removeClass('active')
-            store.addClass('active')
-        }
     }
 
     render() {
