@@ -4,7 +4,7 @@ import Home from './Home.js';
 
 function App() {
   return (
-    <div className="body">
+    <div className="app-body">
       <Home />
     </div>
   );

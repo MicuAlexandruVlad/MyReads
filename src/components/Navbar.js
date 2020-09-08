@@ -32,13 +32,13 @@ export default class Navbar extends Component {
 
     render() {
         return (
-            <div className="body flex-col">
+            <div className="body border flex-col">
                 <div onClick={ () => { this.onBookshelf() } } id="bookshelf" className="icon-holder flex-col">
-                    <img src={ booksIcon } className="nav-icon"/>
+                    <img src={ booksIcon } className="nav-icon" alt="bookshelf"/>
                     <span className="icon-title">Bookshelf</span>
                 </div>
                 <div onClick={ () => { this.onStore() } } id="bookstore" className="icon-holder flex-col">
-                    <img src={ storeIcon } className="nav-icon"/>
+                    <img src={ storeIcon } className="nav-icon" alt="bookstore" />
                     <span className="icon-title">Store</span>
                 </div>
             </div>

@@ -1,0 +1,84 @@
+$icon: #1abb9c;
+$main: #6947FF;
+
+.book-body {
+    width: fit-content;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+
+    .book-cover-holder {
+        position: relative;
+        
+        .menu {
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            cursor: pointer;
+            position: absolute;
+            margin-left: 4px;
+            margin-top: 4px;
+            box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.288);
+            
+            .menu-icon {
+                object-fit: contain;
+                width: 16px;
+                height: 16px;
+                margin: auto;
+            }
+
+            
+        }
+
+        .book-cover {
+            width: 128px;
+            height: 188px;
+        }
+    }
+
+    .book-title {
+        font-size: 1em;
+        margin-top: 1rem;
+        font-weight: 600;
+        max-width: 128px;
+    }
+
+    .book-author {
+        margin-top: .4rem;
+        font-weight: 300;
+        color: rgba(0, 0, 0, 0.5);
+        max-width: 128px;
+    }
+
+    .dialog-title {
+        max-width: 300px;
+    }
+}
+
+.actions-holder {
+    width: 100%;
+    justify-items: center;
+    overflow: hidden;
+    
+    .dialog-action {
+        margin-left: 1rem;
+        margin-right: 1rem;
+        margin-top: .5rem;
+        margin-bottom: .5rem;
+        padding-top: .4rem;
+        padding-bottom: .4rem;
+        cursor: pointer;
+        background-color: $main;
+        justify-content: center;
+        border-radius: 1rem;
+
+        span {
+            color: white;
+            user-select: none;
+        }
+    }
+    
+}
+
+

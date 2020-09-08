@@ -1,0 +1,80 @@
+$icon: #1abb9c;
+$main: #6947FF;
+
+.store-body {
+    padding-left: 2rem;
+    width: 100%;
+    font-family: 'Kumbh Sans', sans-serif;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    .top {
+        align-items: center;
+        margin-bottom: 0rem;
+        margin-right: 2rem;
+
+        h1 {
+            font-weight: 600;
+            color: $main;
+            flex: .1;
+        }
+
+        .search-container {
+            width: 400px;
+            height: 50px;
+            background-color: #F6F6FA;
+            border-radius: 2rem;
+            margin-left: 2rem;
+            padding-left: 1.4rem;
+            padding-right: 1.4rem;
+            align-items: center;
+
+            .search-icon {
+                object-fit: contain;
+                width: 22px;
+                height: 22px;
+            }
+
+            .search-field {
+                width: 100%;
+                background-color: transparent;
+                outline: none;
+                border: none;
+                font-size: 1em;
+                margin-left: .6rem;
+            }
+        }
+    }
+
+    .results {
+        color: rgba(0, 0, 0, 0.6);
+        margin-bottom: 1rem;
+    }
+
+    .book-holder {
+        flex-wrap: wrap;
+    }
+}
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #6947ff18;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #6947ff8c;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #6947ffbe;
+}

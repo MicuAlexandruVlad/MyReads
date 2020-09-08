@@ -1,0 +1,47 @@
+$icon: #1abb9c;
+$main: #6947ff;
+
+.bookshelf-body {
+    padding-left: 2rem;
+    width: 100%;
+    font-family: 'Kumbh Sans', sans-serif;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    .section {
+        margin-bottom: 2rem;
+
+        .section-title {
+            font-weight: 600;
+            color: $main;
+        }
+    }
+
+    .book-holder {
+        flex-wrap: wrap;
+    }
+
+
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #6947ff18;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #6947ff8c;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #6947ffbe;
+}
