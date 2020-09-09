@@ -6,7 +6,7 @@ import Book from '../shared/components/BookComponent.js'
 export default class Bookstore extends Component {
 
     updateQuery = (event) => {
-        this.props.onQueryUpdate(event.target.value.trim())
+        this.props.onQueryUpdate(event.target.value)
     }
 
     render() {

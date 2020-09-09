@@ -6,6 +6,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import * as $ from 'jquery'
 
 export default class BookComponent extends Component {
 
@@ -26,6 +27,7 @@ export default class BookComponent extends Component {
                 if (this.props.book.shelf === 0) {
                     this.props.onNewBook(this.props.book, option)
                 } else {
+                    // this bugs out....
                     this.props.onShelfChange(this.props.book, option)
                 }
             }
@@ -62,19 +64,36 @@ export default class BookComponent extends Component {
                             className="dialog-title">{ `Add ${ this.props.book.name } to bookshelf` }
                         </DialogTitle>
                         <DialogContent>
+                            <b
+                                style={{ display: this.props.book.shelf === 0 ? 'none' : 'block' }}
+                            >Current shelf: { 
+                                    this.props.book.shelf === 1 ? 'Currently Reading' : 
+                                    this.props.book.shelf === 2 ? 'Want to Read' : 'Read'  }</b>
                             <DialogContentText id="alert-dialog-description">
                                 Choose one of the options below:
                             </DialogContentText>
                             </DialogContent>
                             <DialogActions>
                                 <div className="flex-col actions-holder">
-                                    <div onClick={ () => this.handleClose(1) } className="dialog-action flex-row">
+                                    <div 
+                                        id="cr"
+                                        onClick={ () => this.handleClose(1) } 
+                                        className="dialog-action"
+                                        style={{display: this.props.book.shelf === 1 ? "none" : "flex"}}>
                                         <span>Currently Reading</span>
                                     </div>
-                                    <div onClick={ () => this.handleClose(2) } className="dialog-action flex-row">
+                                    <div 
+                                        id="wr"
+                                        onClick={ () => this.handleClose(2) } 
+                                        className="dialog-action"
+                                        style={{display: this.props.book.shelf === 2 ? "none" : "flex"}}>
                                         <span>Want to Read</span>
                                     </div>
-                                    <div onClick={ () => this.handleClose(3) } className="dialog-action flex-row">
+                                    <div 
+                                        id="r"
+                                        onClick={ () => this.handleClose(3) } 
+                                        className="dialog-action"
+                                        style={{display: this.props.book.shelf === 3 ? "none" : "flex"}}>
                                         <span>Read</span>
                                     </div>
                                 </div>

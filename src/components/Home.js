@@ -18,7 +18,7 @@ export default class Home extends Component {
         foundBooks: [],
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         // if the component mounted I request all the saved books
         client.getAll().then((result) => {
             this.handleMyBooks(result)
@@ -236,9 +236,14 @@ export default class Home extends Component {
         // i also change it in the foundBooks array so i can display a different
         // message in the shelf change dialog
         let f = this.state.foundBooks
-        f.map((b) => {
-            b.shelf = newShelfIndex
-        })
+        for (let index = 0; index < f.length; index++) {
+            const b = f[index];
+            if (b.id === book.id) {
+                b.shelf = newShelfIndex
+                break
+            }
+            
+        }
 
         this.setState({
             foundBooks: f
@@ -252,8 +257,8 @@ export default class Home extends Component {
 
                 <Router>
 
-                    <Link id="bookshelfLink" to='/bookshelf' ></Link>
-                    <Link id="bookstoreLink" to='/bookstore' ></Link>
+                    <Link id="bookshelfLink" to='/' ></Link>
+                    <Link id="bookstoreLink" to='/search' ></Link>
 
                     <Route render={() => ( 
                         <Bookshelf 
@@ -262,7 +267,7 @@ export default class Home extends Component {
                             currentlyReadingBooks={ this.state.currentlyReadingBooks }
                             onShelfChange={ this.handleShelfChange }
                             />
-                    )} exact path='/bookshelf' />
+                    )} exact path='/' />
                     <Route render={() => (
                         <Bookstore 
                             books={ this.state.foundBooks }
@@ -270,7 +275,7 @@ export default class Home extends Component {
                             onShelfChange={ this.handleShelfChange }
                             query={ this.state.searchQuery }
                             onQueryUpdate={ this.handleQueryChange }  />
-                    )} exact path='/bookstore' />
+                    )} exact path='/search' />
                 </Router>
             </div>
         )

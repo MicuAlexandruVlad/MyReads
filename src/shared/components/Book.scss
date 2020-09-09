@@ -62,6 +62,7 @@ $main: #6947FF;
     overflow: hidden;
     
     .dialog-action {
+        display: flex;
         margin-left: 1rem;
         margin-right: 1rem;
         margin-top: .5rem;
@@ -70,15 +71,23 @@ $main: #6947FF;
         padding-bottom: .4rem;
         cursor: pointer;
         background-color: $main;
-        justify-content: center;
         border-radius: 1rem;
 
         span {
+            width: 100%;
+            text-align: center;
             color: white;
             user-select: none;
+            margin-left: auto;
+            margin-right: auto;
         }
     }
     
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
 }
 
 
