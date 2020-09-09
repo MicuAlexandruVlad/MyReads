@@ -14,7 +14,7 @@ export default class BookComponent extends Component {
         dialogOpen: false
     }
 
-    //options: 1 -> Currently Reading, 2 -> Want to Read, 3 -> Read
+    //options: 1 -> Currently Reading, 2 -> Want to Read, 3 -> Read, 0 -> None
 
     handleClose(option) {
         // if there was an option selected i check to see if the dialog was opened from the Bookstore or not
@@ -95,6 +95,13 @@ export default class BookComponent extends Component {
                                         className="dialog-action"
                                         style={{display: this.props.book.shelf === 3 ? "none" : "flex"}}>
                                         <span>Read</span>
+                                    </div>
+                                    <div 
+                                        id="n"
+                                        onClick={ () => this.handleClose(0) } 
+                                        className="dialog-action"
+                                        style={{display: this.props.book.shelf === 0 ? "none" : "flex"}}>
+                                        <span>None</span>
                                     </div>
                                 </div>
                             </DialogActions>

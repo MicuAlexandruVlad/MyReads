@@ -5,8 +5,11 @@ import Book from '../shared/components/BookComponent.js'
 
 export default class Bookstore extends Component {
 
+    query = ''
+
     updateQuery = (event) => {
         this.props.onQueryUpdate(event.target.value)
+        this.query = event.target.value
     }
 
     render() {
@@ -25,8 +28,14 @@ export default class Bookstore extends Component {
                             onChange={ this.updateQuery } />
                     </div>
                 </div>
-                <span className="results" >Displaying { this.props.books.length } results for : 
-                     <b>{ this.props.query }</b> </span>
+                <div className="flex-col">
+                    <span className="results" >Displaying { this.props.books.length } results for : 
+                        <b>{ this.props.query }</b> 
+                    </span>
+                <span style={{
+                        display: this.props.books.length > 0 ? "none" : "block"
+                    }} className="error">{ this.props.error }</span>
+                </div>
                 <div className="flex-row book-holder">
                         {
                             this.props.books.map((book) => (

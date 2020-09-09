@@ -16,6 +16,7 @@ export default class Home extends Component {
         wantToReadBooks: [],
         readBooks: [],
         foundBooks: [],
+        errorMessage: '',
     }
 
     async componentDidMount() {
@@ -43,7 +44,7 @@ export default class Home extends Component {
     }
 
     handleBookSearch = () => {
-        if (this.state.searchQuery.length > 2) {
+        if (this.state.searchQuery.length > 0) {
             client.search(this.state.searchQuery, 25).then((response) => {
                 console.log(response)
                 // if an array of objects is received -> start parsing the data
@@ -84,13 +85,17 @@ export default class Home extends Component {
                     this.setState({
                         foundBooks: books
                     })
+                } else {
+                    this.setState({
+                        foundBooks: [],
+                        errorMessage: 'Invalid query'
+                     })
                 }
-                // console.log(response[0]);
             })
         } else {
-            // if the query has less than 2 characters i reset the books array
             this.setState({
-                foundBooks: []
+                foundBooks: [],
+                errorMessage: ''
             })
         }
     }
@@ -197,6 +202,11 @@ export default class Home extends Component {
                     currentlyReadingBooks: books,
                     readBooks: currentState.readBooks.concat(book)
                 }))
+            } else if (newShelfIndex === 0) {
+                client.update(book, "none")
+                this.setState((currentState) => ({
+                    currentlyReadingBooks: currentState.currentlyReadingBooks.filter(b => b.id !== book.id)
+                }))
             }
         } else if (book.shelf === 2) {
             books = this.state.wantToReadBooks.filter(arrayBook => arrayBook.id !== book.id)
@@ -213,6 +223,11 @@ export default class Home extends Component {
                     wantToReadBooks: books,
                     readBooks: currentState.readBooks.concat(book)
                 }))
+            } else if (newShelfIndex === 0) {
+                client.update(book, "none")
+                this.setState((currentState) => ({
+                    wantToReadBooks: currentState.wantToReadBooks.filter(b => b.id !== book.id)
+                }))
             }
         } else {
             books = this.state.readBooks.filter(arrayBook => arrayBook.id !== book.id)
@@ -228,6 +243,11 @@ export default class Home extends Component {
                 this.setState((currentState) => ({
                     readBooks: books,
                     wantToReadBooks: currentState.wantToReadBooks.concat(book)
+                }))
+            } else if (newShelfIndex === 0) {
+                client.update(book, "none")
+                this.setState((currentState) => ({
+                    readBooks: currentState.readBooks.filter(b => b.id !== book.id)
                 }))
             }
         }
@@ -271,6 +291,7 @@ export default class Home extends Component {
                     <Route render={() => (
                         <Bookstore 
                             books={ this.state.foundBooks }
+                            error={ this.state.errorMessage }
                             onNewBook={ this.handleNewBook }
                             onShelfChange={ this.handleShelfChange }
                             query={ this.state.searchQuery }

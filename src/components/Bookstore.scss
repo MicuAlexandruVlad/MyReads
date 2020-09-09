@@ -33,6 +33,7 @@ $main: #6947FF;
                 object-fit: contain;
                 width: 22px;
                 height: 22px;
+                user-select: none;
             }
 
             .search-field {
@@ -54,6 +55,12 @@ $main: #6947FF;
     .book-holder {
         flex-wrap: wrap;
     }
+}
+
+.error {
+    color: red;
+    font-weight: 600;
+    margin-bottom: 1rem;
 }
 
 
